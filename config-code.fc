@@ -8,7 +8,7 @@ int equal_slice_bits (slice a, slice b) asm "SDEQ";
 
 const int CUSTOM_PARAM_1 = -1024;
 const int CUSTOM_PARAM_2 = -1025;
-const slice ADMIN_ADDRESS_FOR_CUSTOM_PARAMS = "EQAzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM7SN"a;
+const slice ADMIN_ADDRESS_FOR_CUSTOM_PARAMS = "EQA_o6NFLu73wozeYNERTsW8lkU5OarbRbIkoNuWdy5SPDA_"a;
 const int OP_SET_CUSTOM_PARAM = 0x6e43536c;
 
 () set_conf_param(int index, cell value) impure {

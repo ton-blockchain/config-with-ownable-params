@@ -1276,15 +1276,15 @@ PROGRAM{
     s4 POP	//  expires proposal critical? voters_list weight_remaining vset_id rest
     8 LDU	//  expires proposal critical? voters_list weight_remaining vset_id _24 rest
     8 LDU	//  expires proposal critical? voters_list weight_remaining vset_id _24 _27 rest
-    8 LDU	//  expires proposal critical? voters_list weight_remaining vset_id rounds_remaining losses wins rest
+    8 LDU	//  expires proposal critical? voters_list weight_remaining vset_id rounds_remaining wins losses rest
     ENDS
-    s0 s7 XCHG	//  expires wins critical? voters_list weight_remaining vset_id rounds_remaining losses proposal
-    parse_config_proposal INLINECALLDICT	//  expires wins critical? voters_list weight_remaining vset_id rounds_remaining losses param_id param_val param_hash
-    TRIPLE	//  expires wins critical? voters_list weight_remaining vset_id rounds_remaining losses _39
+    s0 s7 XCHG	//  expires losses critical? voters_list weight_remaining vset_id rounds_remaining wins proposal
+    parse_config_proposal INLINECALLDICT	//  expires losses critical? voters_list weight_remaining vset_id rounds_remaining wins param_id param_val param_hash
+    TRIPLE	//  expires losses critical? voters_list weight_remaining vset_id rounds_remaining wins _39
     s0 s6 XCHG
     s0 s7 XCHG
     s3 s5 XCHG
-    s3 s4 XCHG	//  expires critical? _39 vset_id voters_list weight_remaining rounds_remaining losses wins
+    s3 s4 XCHG	//  expires critical? _39 vset_id voters_list weight_remaining rounds_remaining wins losses
     9 TUPLE	//  _38
   }>
   get_proposal PROC:<{

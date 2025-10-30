@@ -1,5 +1,7 @@
 #pragma version =0.4.6;
-;; Simple configuration smart contract
+;; Currently deployed config-contract in mainnet can be found
+;; on https://verifier.ton.org/Ef9VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVbxn
+;; Tests and other artifacts of this contract version are available at https://github.com/ton-blockchain/config-with-ownable-params
 
 (slice, int) check_exotic(cell c) asm "XCTOS";
 int equal_slice_bits (slice a, slice b) asm "SDEQ";
@@ -647,10 +649,10 @@ _ unpack_proposal(slice pstatus) inline_ref {
       voters_list = cons(voter_id, voters_list);
     }
   } until (~ f);
-  var (rounds_remaining, losses, wins) = (rest~load_uint(8), rest~load_uint(8), rest~load_uint(8));
+  var (rounds_remaining, wins, losses) = (rest~load_uint(8), rest~load_uint(8), rest~load_uint(8));
   rest.end_parse();
   var (param_id, param_val, param_hash) = parse_config_proposal(proposal);
-  return [expires, critical?, [param_id, param_val, param_hash], vset_id, voters_list, weight_remaining, rounds_remaining, losses, wins];
+  return [expires, critical?, [param_id, param_val, param_hash], vset_id, voters_list, weight_remaining, rounds_remaining, wins, losses];
 }
 
 _ get_proposal(int phash) method_id {
@@ -685,3 +687,4 @@ _ proposal_storage_price(int critical?, int seconds, int bits, int refs) method_
   seconds = min(seconds, max_store_sec);
   return (bit_price * (bits + 1024) + cell_price * (refs + 2)) * seconds;
 }
+

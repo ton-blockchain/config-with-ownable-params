@@ -88,7 +88,7 @@ describe('Config custom slot', () => {
 
 
     const customSlots: Array<-1024 | -1025> = [-1024, -1025];
-    const customSlotAdmin = Address.parse("EQAzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM7SN");
+    const customSlotAdmin = Address.parse("EQA_o6NFLu73wozeYNERTsW8lkU5OarbRbIkoNuWdy5SPDA_");
 
     let initialState: BlockchainSnapshot;
 
